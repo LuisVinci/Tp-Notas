@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> LOGIN - M I O</title>
+  <meta charset="UTF-8">
+  <link rel="StyleSheet" href="css/StyleLogin.css" type="text/css"; >
+
+</head>
+<body>
+  
+  <div id="divLogin">
+    <fieldset>
+      <h4>
+        <form action="" method="post">
+            <p><img src= CSS/taza2.png id="imgTaza" title= "Bienvenido a tus notas! :)" ></p>
+            <br>
+            <p><label id="labelUser">Usuario/Mail:</label>    
+            <input type="text" name="nombre" size="20" required></p>
+            
+            <br>
+            <p><label id="labelContraseña">Contraseña:   </label>  
+            <input id='inputClave' type="password" name="clave" size="12" required></p>
+            <br>
+            <p><input type="checkbox" onclick="MostrarContraseña()"/> Mostrar Contraseña</p>
+
+          <p> 
+            <input type="submit" value="Login" class="buttonLogin" id="btnLogin">
+            <input type="reset" value="Borrar" class="buttonBorrar" id="btnBorrar" href="#">
+          </p>  
+          <br>
+            <label ><a href="Registro.html">Registrate!</a></label>
+        </form>
+    
+      </h4>
+    </fieldset>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="./main.js"></script>
+</body>
+</html>

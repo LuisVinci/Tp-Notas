@@ -1,0 +1,110 @@
+
+body {
+    height: 950;
+    background-image: url("background_conf.jpg");
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    background-position: center center center;
+    overflow: scroll; 
+	  }
+img {
+    width:10%;
+    height:20%;
+    position: relative;
+    margin: 10px 800px;
+	padding: 0px 0px 0px 100px;
+    }     
+fieldset {
+	color: rgb(223, 217, 217);
+	font-family: "lato", sans-serif;
+	background-color: #439278;
+	border: #ebebeb;
+	-moz-border-radius:3px; 
+	border-radius: 3px; 
+	-webkit-border-radius: 5px;
+	margin: 10px 500px;
+	padding: 25px 0px 25px 100px;
+    font-size: large;
+	
+}	
+
+h1{
+	position: relative;
+	color: white;
+	font-size: 40px;
+	font-family: "lato", sans-serif;
+	width: 60%;
+	text-align: left;
+	
+}
+/*-------------------------------------------------------*/
+#error {
+	color: red;
+	font-family: "lato", sans-serif;
+}
+/*-------------------------------------------------------*/
+.buttonReg {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    border: 1px solid #25768f;
+    border-radius: 3px;
+    background: #69c4bd;
+    /*background: -webkit-gradient(linear, left top, left bottom, from(#69c4bd), to(#512072));*/
+    background: -moz-linear-gradient(top, #69c4bd, #512072);
+    background: linear-gradient(to bottom, #69c4bd, #512072);
+    -webkit-box-shadow: #37b2d7 0px 0px 5px 0px;
+    -moz-box-shadow: #37b2d7 0px 0px 5px 0px;
+    box-shadow: #37b2d7 0px 0px 5px 0px;
+    text-shadow: #174a5a 1px 1px 1px;
+    font: normal normal bold 13px trebuchet ms;
+    color: #ffffff;
+    text-decoration: none;
+}
+.buttonReg:hover,
+.buttonReg:focus {
+    border: 1px solid #2e94b3;
+    background: #9bffca;
+   
+    background: -moz-linear-gradient(top, #9bffca, #792cac);
+    background: linear-gradient(to bottom, #9bffca, #792cac);
+    color: #ffffff;
+    text-decoration: none;
+}
+.buttonReg:active {
+    background: #4d8865;
+    /*background: -webkit-gradient(linear, left top, left bottom, from(#4d8865), to(#512072));*/
+    background: -moz-linear-gradient(top, #4d8865, #512072);
+    background: linear-gradient(to bottom, #4d8865, #512072);
+}
+/*-----------------------------------------------------*/
+.buttonBorrar {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    background: #b3b3b3;
+   /* -webkit-box-shadow: #222020 0px 0px 11px 0px;
+    -moz-box-shadow: #37b2d7 0px 0px 11px 0px;*/
+    box-shadow: #bbbbbb 0px 0px 11px 0px;
+    text-shadow: #303d41 1px 1px 1px;
+    font: normal normal bold 13px trebuchet ms;
+    color: #ffffff;
+    text-decoration: none;
+}
+.buttonBorrar:hover,
+.buttonBorrar:focus {
+    border: 1px solid #464646;
+    background: #464646;
+    color: #ffffff;
+    text-decoration: none;
+}
+/*.buttonBorrar:active {
+    background: #464646;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d8865), to(#512072));
+    background: -moz-linear-gradient(top, #4d8865, #512072);
+    background: linear-gradient(to bottom, #4d8865, #512072);
+}

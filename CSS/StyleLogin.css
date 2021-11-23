@@ -1,0 +1,123 @@
+*{
+	margin:0; 
+	padding:0;
+	box-sizing: border-box;
+}
+body {
+  height: 950;
+  background-image: url("background-Login.jpg");
+  background-size: all;
+  background-repeat:repeat;
+  background-position: center center center;
+}
+label {
+    font-size: large;
+}
+
+/*-----------------Fieldset central del LOGIN----------------*/
+#imgTaza {
+	width:25%;
+	height:40%;
+}
+
+fieldset {
+	color: rgb(60, 51, 70);
+	font-family: "lato", sans-serif;
+	background-color: -moz-linear-gradient(top, #d1c0f8, #fff8be);
+    background: linear-gradient(to bottom,#d1c0f8, #fff8be);
+	border: #ebebeb;
+	-moz-border-radius:10px; 
+	border-radius: 10px; 
+	-webkit-border-radius: 20px;
+	margin: 300px 650px;
+	padding: 25px 25px 25px 25px;
+    text-align: center;
+    box-shadow: #3d3374 0px 0px 5px 0px;
+}
+    
+	
+.fieldset h4{
+	position: relative;
+	color: rgb(255, 255, 255);
+	font-size: 27px;
+	font-family: "lato", sans-serif;
+	width: 60%;
+	text-align: center;
+    
+} 
+/*----------------------Botones---------------------------------*/
+.buttonLogin {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    border: 1px solid #25768f;
+    border-radius: 3px;
+    background: #69c4bd;
+    background:  #69c4bd;
+    -webkit-box-shadow: #37b2d7 0px 0px 5px 0px;
+    -moz-box-shadow: #37b2d7 0px 0px 5px 0px;
+    box-shadow: #37b2d7 0px 0px 5px 0px;
+    text-shadow: #174a5a 1px 1px 1px;
+    font: normal normal bold 13px trebuchet ms;
+    color: #ffffff;
+    text-decoration: none;
+	margin-top : 20px;
+}
+.buttonLogin:hover,
+.buttonLogin:focus {
+    border: 1px solid #2e94b3;
+    background: #9bffca;
+   /* background: -webkit-gradient(linear, left top, left bottom, from(#9bffca), to(#792cac));*/
+    background: -moz-linear-gradient(top, #9bffca, #792cac);
+    background: linear-gradient(to bottom, #9bffca, #792cac);
+    color: #ffffff;
+    text-decoration: none;
+}
+.buttonLogin:active {
+    background: #4d8865;
+   /* background: -webkit-gradient(linear, left top, left bottom, from(#4d8865), to(#512072));*/
+    background: -moz-linear-gradient(top, #4d8865, #512072);
+    background: linear-gradient(to bottom, #4d8865, #512072);
+}
+/*-----------------------------------------------------*/
+.buttonBorrar {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    background: #b3b3b3;
+    box-shadow: #bbbbbb 0px 0px 11px 0px;
+    text-shadow: #303d41 1px 1px 1px;
+    font: normal normal bold 13px trebuchet ms;
+    color: #ffffff;
+    text-decoration: none;
+	margin-top: 20px;
+}
+.buttonBorrar:hover,
+.buttonBorrar:focus {
+    border: 1px solid #464646;
+    background: #464646;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/*------------------------------------------*/
+
+ /* link */
+ a:link {
+	color: rgb(45, 85, 57);
+  }
+  
+  /* link visitado*/
+  a:visited {
+	color:  rgb(148, 116, 238);
+  }
+
+  
+  /* click en el link */
+  a:active {
+	color: rgb(68, 53, 153);
+  }

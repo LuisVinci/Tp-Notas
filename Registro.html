@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Registro </title>
+  <meta charset="UTF-8">
+  <link rel="StyleSheet" href="css/StyleRegistro.css" type="text/css">;
+</head>
+<body>
+  
+  <a href="index.html"><img src= CSS/taza2.png id="taza" title= "Bienvenido a tus notas! :)" ></a>
+  
+  <fieldset>
+    <h1> Crea una cuenta </h1>
+      <form name="RegistroForm" method="post" >
+      Ingrese un nombre de usuario a eleccion:
+      <input type="text" id='inputNombre' size="20"> 
+      <br>
+      <p>
+      Mail:
+      <input type="text" id='inputMail' size="20">
+      <br>
+      <p>
+      Contraseña:
+      <input type="password" id='inputClave' size="12">
+      <br>
+      <p>  
+      <div> <span class="input-group-text">
+      <input type="checkbox" onclick="MostrarContraseña()"/> Mostrar Contraseña
+      </span> </div>
+      <br>
+      <p>
+      <input type="submit" onclick='return validacionRegistro()' value="Registrarse" class="buttonReg" method="post" id="btnRegistro" >
+
+      <input type="reset" value="Borrar" class="buttonBorrar">  
+    </form>
+  <div id='error'></div>
+</fieldset>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>

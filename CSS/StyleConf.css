@@ -1,0 +1,301 @@
+
+body {
+    height: 950;
+  background-image: url("background-P_Principal.jpg");
+  background-attachment: fixed;
+  background-repeat:no-repeat;
+  background-position: center center center;
+  overflow: scroll;
+}
+  
+fieldset {
+	color: rgb(124, 124, 124);
+	font-family: "lato", sans-serif;
+	background-color: #ebebeb;
+	border: #ebebeb;
+	-moz-border-radius:3px; 
+	border-radius: 3px; 
+	-webkit-border-radius: 5px;
+	margin: 100px 600px;
+	padding: 25px 25px 50px 100px;
+	
+}	
+h1{
+	position: relative;
+	color: rgb(122, 122, 122);
+	font-size: 40px;
+	font-family: "lato", sans-serif;
+	width: 60%;
+	text-align: left;
+} 
+ul li img {
+	width: 50px;
+	height:50px;
+	
+}
+
+label {
+	font-family: "lato", sans-serif;
+	font-size: x-large;
+	color: gray;
+	margin: 200px 600px;	
+}
+textarea {
+	border-color: rgb(93, 236, 181);
+	
+}
+
+.wrapper {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.card {
+	padding: 0.5rem 1rem;
+	border: transparent;
+	border-radius: 5px;
+	margin: .3rem 0;
+	font-family: "lato", sans-serif;
+	background-color: #2b9e95;
+	color: white;
+} 
+
+#fechadiv {
+	padding: 0.5rem 1rem;
+	border: transparent;
+	margin: .3rem 0;
+	font-family: "lato", sans-serif;
+	background-color:transparent;
+	font-size: larger;
+	color: gray;
+	text-transform:capitalize;
+} 
+
+
+/* ----------------Boton para guardar notas----------------------------------------------------------- */
+#btnGuardar {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0px;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 18px;
+	background: #69c4bd;
+	padding: 5px 5px 5px 5px;
+	text-decoration: none;
+	margin: 0px 0px;
+	border-color: transparent;
+	box-shadow: #3d3374 0px 0px 3px 0px;
+  }
+  
+#btnGuardar:hover {
+	background: #9bffca;
+	text-decoration: none;
+  }
+/* -------------------Barra de menu-------------------------------------------------------- */
+
+
+.menu_bar {
+	padding:0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	
+}
+
+.menu_bar {
+	display:none;
+	
+}
+
+header {
+	width: 15%;
+	font-family: "lato", sans-serif;
+	font-size: larger;
+	
+}
+
+header nav {
+	background:#559e98;
+	z-index:1000;
+	max-width: 1000px;
+	width:95%;
+	margin:0px auto;
+	
+}
+
+header nav ul {
+	list-style:none;
+	
+}
+
+header nav ul li {
+	display:inline-block;
+	position: relative;
+
+}
+
+header nav ul li:hover {
+	background:#9bffca;
+}
+
+header nav ul li a {
+	color:#fff;
+	display:block;
+	text-decoration:none;
+	padding: 10px;
+}
+
+header nav ul li a span {
+	margin-right:10px;
+}
+
+header nav ul li:hover .children {
+	display:block;
+}
+
+header nav ul li .children {
+	display: none;
+	background:#a8a8a8;
+	position: absolute;
+	width: 150%;
+	z-index:1000;
+}
+
+header nav ul li .children li {
+	display:block;
+	overflow: hidden;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+header nav ul li .children li a {
+	display: block;
+}
+
+header nav ul li .children li a span {
+	float: right;
+	position: relative;
+	top:3px;
+	margin-right:0;
+	margin-left:10px;
+}
+
+header nav ul li .caret {
+	position: relative;
+	top:3px;
+	margin-left:10px;
+	margin-right:0px;
+}
+
+@media screen and (max-width: 800px) {
+	body {
+		padding-top:80px;
+	}
+
+	.menu_bar {
+		display:block;
+		width:100%;
+		position: fixed;
+		top:0;
+		background:#333333;
+	}
+
+	.menu_bar .bt-menu {
+		display: block;
+		padding: 20px;
+		color: #fff;
+		overflow: hidden;
+		font-size: 25px;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	.menu_bar span {
+		float: right;
+		font-size: 40px;
+	}
+
+	header nav {
+		width: 80%;
+		height: calc(100% - 80px);
+		position: fixed;
+		right:100%;
+		margin: 0;
+		overflow: scroll;
+	}
+
+	header nav ul li {
+		display: block;
+		border-bottom:1px solid rgba(255,255,255,.5);
+	}
+
+	header nav ul li a {
+		display: block;
+	}
+
+	header nav ul li:hover .children {
+		display: none;
+	}
+
+	header nav ul li .children {
+		width: 100%;
+		position: relative;
+	}
+
+	header nav ul li .children li a {
+		margin-left:20px;
+	}
+
+	header nav ul li .caret {
+		float: right;
+	}
+}
+ /*------------------------------------------*/
+
+ /* link */
+a:link {
+	color: rgb(96, 177, 120);
+  }
+  
+  /* link visitado*/
+  a:visited {
+	color:  rgb(28, 73, 42);
+  }
+  
+
+  /* click en el link */
+  a:active {
+	color: rgb(162, 255, 198);
+  }
+
+  /*-------------------inputs de pantalla informacion ------------------------*/
+
+  #inputNick, #inputID, #inputFecha, #inputMail {
+	  background-color: transparent;
+	  border-color: transparent;
+	  color:rgb(96, 177, 120);
+	  font-size: medium;
+  }
+ /*------------------------------------------*/
+
+ .buscar {
+	 align-self: right;
+
+ }
+
+ #btnBuscar {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 10px;
+	border-color: transparent;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 18px;
+	background: #83e4dc;
+	padding: 5px 5px 5px 5px;
+	text-decoration: none;
+	margin: 0px 0px;
+	box-shadow: #3d3374 0px 0px 3px 0px;
+  }
+  

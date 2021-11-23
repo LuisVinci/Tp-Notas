@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="StyleSheet" href="css/StyleConf.css" type="text/css">
+    <body></body>
+    <header>
+		<div class="menu_bar"> 
+      <a href="#" class="bt-menu">Menú</a>
+		</div>
+    <nav>
+			<ul>
+          <li class= "inicio"><a href="PaginaPrincipal.html"><img src= CSS/taza2.png title= "Inicio :)"></li>
+					<li class="submenu">
+          <a href="#"><span class="icon-rocket"></span>Menu<span class="caret icon-arrow-down6"></span></a>
+					<ul class="children">
+						<li><a href="configuracion.html">Configuracion<span class="icon-dot"></span></a></li>
+						<li><a href="Info.html">Informacion<span class="icon-dot"></span></a></li>
+                        <li><a href="login mio.html"><span class="Logout"></span>Cerrar Sesion</a></li>
+					</ul>
+				</li>
+			</ul></nav>
+			
+		
+  </header>
+  	
+</head>     
+	<label> Ingresa tu nota</label>
+	<br>
+	<div class= "wrapper text-center">
+	<textarea id="txt" name="nota" rows="5" cols="60" placeholder="Anota aqui lo que quieras! :)"></textarea> 
+
+		<button onclick="getRs(), Borrartxt(), traerNotas()" value="Guardar" id="btnGuardar">Guardar</button>
+		
+ </div>
+<div  id="rs"  class="wrapper"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>

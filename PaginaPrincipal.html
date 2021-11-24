@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="StyleSheet" href="css/StyleConf.css" type="text/css">
-    <body></body>
+    <body onload="traerNotas()"></body>
     <header>
 		<div class="menu_bar"> 
       <a href="#" class="bt-menu">Menú</a>
@@ -30,7 +30,7 @@
 	<div class= "wrapper text-center">
 	<textarea id="txt" name="nota" rows="5" cols="60" placeholder="Anota aqui lo que quieras! :)"></textarea> 
 
-		<button onclick="getRs(), Borrartxt(), traerNotas()" value="Guardar" id="btnGuardar">Guardar</button>
+		<button onclick="crearNota(), Borrartxt(), traerNotas()" value="Guardar" id="btnGuardar">Guardar</button>
 		
  </div>
 <div  id="rs"  class="wrapper"></div>

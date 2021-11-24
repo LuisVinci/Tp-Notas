@@ -1,4 +1,4 @@
-
+var numberNota = 0;
 /* -------------toma notas del campo txt y las imprime debajo------------------------------------- */
 function thisComponent(id){
     return document.getElementById(id)
@@ -32,8 +32,61 @@ function imprimirNota(nota, fechaCreacion) {
 	//convierto fechaCreacion(tipo TIMESTAMPS) a dateFechaCreacion(tipo DATE) asi puedo parsearlo
 	var dateFechaCreacion = new Date(fechaCreacion);
 	var formatoFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-	thisComponent('rs').innerHTML += "<div id='fechadiv'><small>"+ dateFechaCreacion.toLocaleDateString(undefined, formatoFecha) +" ☆ "+ dateFechaCreacion.toLocaleTimeString() +"</small></div><div contenteditable='true' class= card ><p>" + nota + "</p> </div>";
+	var cardDynamicId = "card"+numberNota;
+	thisComponent('rs').innerHTML += 
+	"<div id='fechadiv'>"
+	+ "<small>" 
+	+ dateFechaCreacion.toLocaleDateString(undefined, formatoFecha) 
+	+ " ☆ "
+	+ dateFechaCreacion.toLocaleTimeString() 
+	+"</small>"
+	+"</div>"
+	+"<div contenteditable='true' class='card'>"
+	+"<p>" 
+	+ "<input id='" + cardDynamicId +"' value=" + JSON.stringify(nota) +"  type='text' name='inputCard'>"
+	+"<br>"
+	+ "<button onclick='GuardarActualizacion("+ JSON.stringify(cardDynamicId) +")' id='btnActualizar' value='Actualizar'>Actualizar</button>"
+	+"<button onclick='eliminarNota("+ JSON.stringify(cardDynamicId) +")' id='btnDeleteNote' value='Eliminar Nota'>Eliminar Nota</button>"
+	+"</p></div>";
+	numberNota++;
 }
+
+/*-------------------boton para guardar actualizaciones -----------------------*/	
+
+function tComponent(id){
+    return document.getElementById(id)
+}
+
+function GuardarActualizacion(cardDynamicId) {
+	var modificacion = tComponent(cardDynamicId);
+	alert("hasta aca llego: " + modificacion.value);
+	/*borrarListadoNotas();
+	imprimirNota(modificacion, new Date());
+	//llamo a la funcion para imprimir una nota en pantalla
+	//imprimirNota(txt, new Date());
+	
+	/*	Post para crear una nota(localhost:8080/note/addNota) 
+	const urlParams = new URLSearchParams(window.location.search);
+	//de la URL, extraigo el queryparam ID. Luego lo concateno a la URL del backend
+	$.post("http://127.0.0.1:8080/note/addNota/",
+    {
+      user_id: urlParams.get('id'),
+      date_created: new Date(),
+      descripcion: modificacion
+    },
+    function(data, status){
+		alert("Nota modificada satisfactoriamente.")
+		location.href = '/PaginaPrincipal.html?id=' + urlParams.get('id');
+    });
+	*/
+}
+
+/*---------------------Boton para eliminar nota en particular-------------------*/
+
+function eliminarNota(cardDynamicId){
+
+}
+
 /* ---------------------------Borra contenido de txt--------------------------- */
 
 function Borrartxt() {
@@ -164,3 +217,6 @@ function traerNotas() {
 			alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
 			});  
  		});
+
+
+

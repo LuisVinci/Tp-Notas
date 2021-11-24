@@ -3,39 +3,48 @@
 function thisComponent(id){
     return document.getElementById(id)
 }
-function getRs() {
-    var txt = thisComponent('txt').value
-    const d = new Date()
-    var formatoFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-	thisComponent('rs').innerHTML += "<div id='fechadiv'><small>"+ d.toLocaleDateString(undefined, formatoFecha) +" ☆ "+ d.toLocaleTimeString() +"</small></div><div contenteditable='true' class= card ><p>" + txt + "</p> </div>";
-
-/*	Post para crear una nota(localhost:8080/note/addNota) */
-
-	$.post("localhost:8080/note/addNota",
+function crearNota() {
+	var txt = thisComponent('txt').value;
+	borrarListadoNotas();
+	imprimirNota(txt, new Date());
+	//llamo a la funcion para imprimir una nota en pantalla
+	//imprimirNota(txt, new Date());
+	
+	/*	Post para crear una nota(localhost:8080/note/addNota) */
+	const urlParams = new URLSearchParams(window.location.search);
+	//de la URL, extraigo el queryparam ID. Luego lo concateno a la URL del backend
+	$.post("http://127.0.0.1:8080/note/addNota/",
     {
-      user_id: "1",
-      creation_date: "fechita de ejemplo",
-      descripcion: "descripcioncita de ejemplo"
+      user_id: urlParams.get('id'),
+      date_created: new Date(),
+      descripcion: txt
     },
     function(data, status){
-      alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
+		alert("Nota creada satisfactoriamente.")
+		location.href = '/PaginaPrincipal.html?id=' + urlParams.get('id');
     });
-		
-	/* Get para obtener todas las notas de un user ID(localhost:8080/notes/NotasByUserId/{userId})*/
-	$.getJSON("localhost:8080/notes/NotasByUserId/1", function(data, status){
-		alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
-	  });
-
-
+	
 }
 
+/* ---------------------------Imprimir notas--------------------------- */
+function imprimirNota(nota, fechaCreacion) {
+	//convierto fechaCreacion(tipo TIMESTAMPS) a dateFechaCreacion(tipo DATE) asi puedo parsearlo
+	var dateFechaCreacion = new Date(fechaCreacion);
+	var formatoFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+	thisComponent('rs').innerHTML += "<div id='fechadiv'><small>"+ dateFechaCreacion.toLocaleDateString(undefined, formatoFecha) +" ☆ "+ dateFechaCreacion.toLocaleTimeString() +"</small></div><div contenteditable='true' class= card ><p>" + nota + "</p> </div>";
+}
 /* ---------------------------Borra contenido de txt--------------------------- */
 
 function Borrartxt() {
     document.getElementById("txt").value = "";
 }
  
+/* ---------------------------Borra contenido de notas--------------------------- */
+
+function borrarListadoNotas() {
+    document.getElementById('rs').innerHTML = "";
+}
 /* ---------------------------Barra Menu------------------------------------- */
 
 $(document).ready(main);
@@ -90,7 +99,6 @@ function validacionRegistro(){
 	}
 	if (vClave.value === ""  || vClave.value === null) {
 		mensajeError.push('• Debes ingresar una contraseña.');
-
 	}
 	if (mensajeError.length === 0 ){
 		alert('Ya estas registrado! Puedes volver a la pantalla de LOGIN haciendo click en el icono de la taza! ;)');
@@ -98,7 +106,51 @@ function validacionRegistro(){
 	error.innerHTML = mensajeError.join('<br>');
 	return false;
 }
-	  	 
+	  
+
+/* ------------------------------Login usado en index.html---------------------------------- */
+ 
+function Login(){
+	var vNombre = document.getElementById('inputNombre');
+	var vClave = document.getElementById('inputClave');
+
+	if(vNombre.value === "" || vClave.value === "") {
+		alert("Es necesario cargar usuario y contraseña para logearse")
+	} else {
+		/* Get para obtener un usuario por Username(localhost:8080/user/Usuario/{username}) */
+		var url = "http://127.0.0.1:8080/user/Usuario/" + vNombre.value;
+		$.getJSON(url, function(data, status) {
+			if(data.password == null ){
+				alert("Usuario inexistente.");
+			} else if(data.password != vClave.value) {
+				alert("Contraseña incorrecta.");
+			} else {
+				alert("Usuario logeado satisfactoriamente.");
+				//redirecciono a la pagina principal
+				location.href = '/PaginaPrincipal.html?id=' + data.id;
+			}
+		});
+	}
+}
+/* ----------------traer todas la notas --------------------------------- */
+
+function traerNotas() {
+	//traigo la URL
+	const urlParams = new URLSearchParams(window.location.search);
+	//de la URL, extraigo el queryparam ID. Luego lo concateno a la URL del backend
+	const url = "http://127.0.0.1:8080/note/NotasByUserId/" + urlParams.get('id');
+	$.getJSON(url, function(data, status){
+		//tomo el data(con la lista de notas en formato texto), y usando JSON.parse obtengo un Array de notas ordenada
+		var jsonArrayNotas = JSON.parse(JSON.stringify(data));
+		for (var i = 0; i < jsonArrayNotas.notas.length; i++) {
+			var descripcion = jsonArrayNotas.notas[i].descripcion;
+			var dateCreated = jsonArrayNotas.notas[i].date_created;
+			imprimirNota(descripcion, dateCreated)
+		}
+		
+	})
+}
+
 /*-------------------creacion de usuario-------------------------------*/ 
 
 	 $("btnRegistro").click(
@@ -112,33 +164,3 @@ function validacionRegistro(){
 			alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
 			});  
  		});
-
-/* Get para obtener un usuario por Username(localhost:8080/user/Usuario/{username}) */
-
-		 $.getJSON("localhost:8080/user/Usuario/nana", function(data, status){
-			  alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
-			});
-
-
-
-
-
-/* ----------------traer todas la notas cuando esta abierta la pagina--------------------------------- 
-
-window.onload = function() {
-	traerNotas();
-};
-
-function traerNotas(){
-	
-$.getJSON("https://httpbin.org/get", function(data, status){
-	getRS("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
-})
-
-}
-
-*/
-
-
-
-

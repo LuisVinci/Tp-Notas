@@ -12,26 +12,26 @@
   <div id="divLogin">
     <fieldset>
       <h4>
-        <form action="" method="post">
+        <form>
             <p><img src= CSS/taza2.png id="imgTaza" title= "Bienvenido a tus notas! :)" ></p>
             <br>
             <p><label id="labelUser">Usuario/Mail:</label>    
-            <input type="text" name="nombre" size="20" required></p>
+            <input id='inputNombre' type="text" name="nombre" size="20"></p>
             
             <br>
             <p><label id="labelContraseña">Contraseña:   </label>  
-            <input id='inputClave' type="password" name="clave" size="12" required></p>
+            <input id='inputClave' type="password" name="clave" size="12"></p>
             <br>
             <p><input type="checkbox" onclick="MostrarContraseña()"/> Mostrar Contraseña</p>
 
           <p> 
-            <input type="submit" value="Login" class="buttonLogin" id="btnLogin">
+            <input type="button" value="Login" onclick="return Login()" class="buttonLogin" id="btnLogin">
             <input type="reset" value="Borrar" class="buttonBorrar" id="btnBorrar" href="#">
           </p>  
           <br>
             <label ><a href="Registro.html">Registrate!</a></label>
         </form>
-    
+        <div id='error'></div>
       </h4>
     </fieldset>
   </div>

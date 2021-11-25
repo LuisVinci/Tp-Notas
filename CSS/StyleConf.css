@@ -92,6 +92,50 @@ textarea {
 	background: #9bffca;
 	text-decoration: none;
   }
+/* ----------------Botones para actualizar y para borrar notas------------------------------------------------ */
+
+#btnActualizar {
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 18px;
+	background: #47d3c7;
+	padding: 3px 3px 3px 3px;
+	text-decoration: none;
+	margin: 5px 5px;
+	border-color: transparent;
+  }
+  
+#btnActualizar:hover {
+	background: #24837b;
+	text-decoration: none;
+  }
+
+  #btnDeleteNote {
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 18px;
+	background: #24837b;
+	padding: 3px 3px 3px 3px;
+	text-decoration: none;
+	margin: 0px 0px;
+	border-color: transparent;
+  }
+  
+#btnDeleteNote:hover {
+	background: #47d3c7;
+	text-decoration: none;
+  }
+/*--------------------Input dentro de card---------------*/
+
+.inputCard{
+	background-color: transparent;
+	border: transparent;
+	font-family: "lato", sans-serif;
+	font-size: medium;
+}
+
+
+
 /* -------------------Barra de menu-------------------------------------------------------- */
 
 

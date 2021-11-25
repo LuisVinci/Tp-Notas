@@ -28,7 +28,7 @@ function crearNota() {
 }
 
 /* ---------------------------Imprimir notas--------------------------- */
-function imprimirNota(nota, fechaCreacion) {
+function imprimirNota(nota, fechaCreacion, idNota) {
 	//convierto fechaCreacion(tipo TIMESTAMPS) a dateFechaCreacion(tipo DATE) asi puedo parsearlo
 	var dateFechaCreacion = new Date(fechaCreacion);
 	var formatoFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
@@ -43,10 +43,11 @@ function imprimirNota(nota, fechaCreacion) {
 	+"</div>"
 	+"<div contenteditable='true' class='card'>"
 	+"<p>" 
-	+ "<input id='" + cardDynamicId +"' value=" + JSON.stringify(nota) +"  type='text' name='inputCard'>"
+	+ "<input id='" + cardDynamicId +"' value=" + JSON.stringify(nota) +"  type='text' name='inputCard' class='inputCard' >"
 	+"<br>"
-	+ "<button onclick='GuardarActualizacion("+ JSON.stringify(cardDynamicId) +")' id='btnActualizar' value='Actualizar'>Actualizar</button>"
-	+"<button onclick='eliminarNota("+ JSON.stringify(cardDynamicId) +")' id='btnDeleteNote' value='Eliminar Nota'>Eliminar Nota</button>"
+	+"<p>"
+	+ "<button onclick='GuardarActualizacion("+ JSON.stringify(cardDynamicId) + "," +JSON.stringify(idNota) + ")' id='btnActualizar' value='Actualizar'>Actualizar</button>"
+	+"<button onclick='eliminarNota("+ JSON.stringify(idNota) +")' id='btnDeleteNote' value='Eliminar Nota'>Eliminar Nota</button>"
 	+"</p></div>";
 	numberNota++;
 }
@@ -57,36 +58,64 @@ function tComponent(id){
     return document.getElementById(id)
 }
 
-function GuardarActualizacion(cardDynamicId) {
+function GuardarActualizacion(cardDynamicId, notaId) {
 	var modificacion = tComponent(cardDynamicId);
-	alert("hasta aca llego: " + modificacion.value);
-	/*borrarListadoNotas();
-	imprimirNota(modificacion, new Date());
-	//llamo a la funcion para imprimir una nota en pantalla
-	//imprimirNota(txt, new Date());
 	
-	/*	Post para crear una nota(localhost:8080/note/addNota) 
+
 	const urlParams = new URLSearchParams(window.location.search);
 	//de la URL, extraigo el queryparam ID. Luego lo concateno a la URL del backend
-	$.post("http://127.0.0.1:8080/note/addNota/",
-    {
-      user_id: urlParams.get('id'),
-      date_created: new Date(),
-      descripcion: modificacion
-    },
-    function(data, status){
-		alert("Nota modificada satisfactoriamente.")
-		location.href = '/PaginaPrincipal.html?id=' + urlParams.get('id');
-    });
-	*/
+	$.ajax({
+		url: "http://127.0.0.1:8080/note/updateNota", 
+		method: 'PUT', 
+		data: {
+			id: notaId,
+			descripcion: modificacion.value
+		}, 
+		success: function(data, status) {
+			alert("Nota modificada satisfactoriamente.");
+			location.href = '/PaginaPrincipal.html?id=' + urlParams.get('id');
+		}
+	});
 }
 
 /*---------------------Boton para eliminar nota en particular-------------------*/
 
-function eliminarNota(cardDynamicId){
-
+function eliminarNota(notaId){
+	
+	const urlParams = new URLSearchParams(window.location.search);
+	//de la URL, extraigo el queryparam ID. Luego lo concateno a la URL del backend
+	$.ajax({
+		url: "http://127.0.0.1:8080/note/deleteNota/" + notaId, 
+		method: 'DELETE', 
+		data: {
+		}, 
+		success: function(data, status) {
+			alert("Nota eliminada satisfactoriamente.");
+			location.href = '/PaginaPrincipal.html?id=' + urlParams.get('id');
+		}
+	});
 }
 
+/*-------------------creacion de usuario-------------------------------*/ 
+
+$("#btnRegistro").click(
+	function() {
+		var vNombre = document.getElementById('inputNombre');
+		var vClave = document.getElementById('inputClave');
+
+		alert(vNombre.value + " " + vClave.value)	
+
+		$.post("http://127.0.0.1:8080/user/addUsuario",
+		{
+		username: vNombre.value,
+		password: vClave.value,
+		data_created: new Date()
+		},
+		function(data, status){
+		alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
+		});  
+	}
+);
 /* ---------------------------Borra contenido de txt--------------------------- */
 
 function Borrartxt() {
@@ -198,25 +227,14 @@ function traerNotas() {
 		for (var i = 0; i < jsonArrayNotas.notas.length; i++) {
 			var descripcion = jsonArrayNotas.notas[i].descripcion;
 			var dateCreated = jsonArrayNotas.notas[i].date_created;
-			imprimirNota(descripcion, dateCreated)
+			var idNota = jsonArrayNotas.notas[i].id;
+			imprimirNota(descripcion, dateCreated, idNota)
 		}
 		
 	})
 }
 
-/*-------------------creacion de usuario-------------------------------*/ 
 
-	 $("btnRegistro").click(
-		function() {
-			post("localhost:8080/user/addUsuario",
-			{
-			username: "donaldDuck",
-			password: "duckburg"
-			},
-			function(data, status){
-			alert("Resultado: " + JSON.stringify(data) + "\nStatus : " + status);
-			});  
- 		});
 
 
 

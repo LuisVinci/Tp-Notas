@@ -132,6 +132,9 @@ textarea {
 	border: transparent;
 	font-family: "lato", sans-serif;
 	font-size: medium;
+	height:100px;
+    width:450px;
+    word-break: break-word;
 }
 
 
